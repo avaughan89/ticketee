@@ -3,3 +3,313 @@
   [1m[36m (1.0ms)[0m  [1mBEGIN[0m
 Started GET "/" for 127.0.0.1 at 2015-03-30 14:20:10 -0700
   [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (123.9ms)[0m  [1mDROP DATABASE IF EXISTS "ticketee_test"[0m
+  [1m[35m (248.1ms)[0m  CREATE DATABASE "ticketee_test" ENCODING = 'utf8'
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2015-03-30 14:22:43 -0700
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (123.7ms)[0m  [1mDROP DATABASE IF EXISTS "ticketee_test"[0m
+  [1m[35m (248.7ms)[0m  CREATE DATABASE "ticketee_test" ENCODING = 'utf8'
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2015-03-30 14:26:06 -0700
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (126.7ms)[0m  [1mDROP DATABASE IF EXISTS "ticketee_test"[0m
+  [1m[35m (253.0ms)[0m  CREATE DATABASE "ticketee_test" ENCODING = 'utf8'
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2015-03-30 14:26:38 -0700
+Processing by ProjectsController#index as HTML
+Completed 500 Internal Server Error in 82ms
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (123.3ms)[0m  [1mDROP DATABASE IF EXISTS "ticketee_test"[0m
+  [1m[35m (248.6ms)[0m  CREATE DATABASE "ticketee_test" ENCODING = 'utf8'
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2015-03-30 14:29:29 -0700
+Processing by ProjectsController#index as HTML
+  Rendered projects/index.html.erb within layouts/application (9.6ms)
+Completed 200 OK in 1204ms (Views: 1196.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (125.1ms)[0m  [1mDROP DATABASE IF EXISTS "ticketee_test"[0m
+  [1m[35m (259.9ms)[0m  CREATE DATABASE "ticketee_test" ENCODING = 'utf8'
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2015-03-30 14:31:08 -0700
+Processing by ProjectsController#index as HTML
+  Rendered projects/index.html.erb within layouts/application (10.3ms)
+Completed 500 Internal Server Error in 75ms
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (124.5ms)[0m  [1mDROP DATABASE IF EXISTS "ticketee_test"[0m
+  [1m[35m (249.5ms)[0m  CREATE DATABASE "ticketee_test" ENCODING = 'utf8'
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2015-03-30 14:34:05 -0700
+Processing by ProjectsController#index as HTML
+  Rendered projects/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 70ms (Views: 62.9ms | ActiveRecord: 0.0ms)
+Started GET "/projects/new" for 127.0.0.1 at 2015-03-30 14:34:06 -0700
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (123.7ms)[0m  [1mDROP DATABASE IF EXISTS "ticketee_test"[0m
+  [1m[35m (252.4ms)[0m  CREATE DATABASE "ticketee_test" ENCODING = 'utf8'
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2015-03-30 14:34:29 -0700
+Processing by ProjectsController#index as HTML
+  Rendered projects/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 94ms (Views: 84.9ms | ActiveRecord: 0.0ms)
+Started GET "/projects/new" for 127.0.0.1 at 2015-03-30 14:34:29 -0700
+Processing by ProjectsController#new as HTML
+Completed 500 Internal Server Error in 3ms
+  [1m[35m (0.4ms)[0m  ROLLBACK
+  [1m[36m (123.9ms)[0m  [1mDROP DATABASE IF EXISTS "ticketee_test"[0m
+  [1m[35m (249.8ms)[0m  CREATE DATABASE "ticketee_test" ENCODING = 'utf8'
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2015-03-30 14:35:36 -0700
+Processing by ProjectsController#index as HTML
+  Rendered projects/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 73ms (Views: 65.5ms | ActiveRecord: 0.0ms)
+Started GET "/projects/new" for 127.0.0.1 at 2015-03-30 14:35:36 -0700
+Processing by ProjectsController#new as HTML
+Completed 500 Internal Server Error in 2ms
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (124.0ms)[0m  [1mDROP DATABASE IF EXISTS "ticketee_test"[0m
+  [1m[35m (248.0ms)[0m  CREATE DATABASE "ticketee_test" ENCODING = 'utf8'
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (4.6ms)[0m  CREATE TABLE "projects" ("id" serial primary key, "name" character varying, "description" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (2.2ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (1.4ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (0.3ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150330213601')
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2015-03-30 14:37:29 -0700
+Processing by ProjectsController#index as HTML
+  Rendered projects/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 26ms (Views: 15.5ms | ActiveRecord: 0.0ms)
+Started GET "/projects/new" for 127.0.0.1 at 2015-03-30 14:37:29 -0700
+Processing by ProjectsController#new as HTML
+  Rendered projects/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 8ms (Views: 1.5ms | ActiveRecord: 2.5ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2015-03-30 14:39:58 -0700
+Processing by ProjectsController#index as HTML
+  Rendered projects/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 68ms (Views: 60.4ms | ActiveRecord: 0.0ms)
+Started GET "/projects/new" for 127.0.0.1 at 2015-03-30 14:39:58 -0700
+Processing by ProjectsController#new as HTML
+  Rendered projects/new.html.erb within layouts/application (27.3ms)
+Completed 200 OK in 35ms (Views: 28.6ms | ActiveRecord: 2.2ms)
+Started POST "/projects" for 127.0.0.1 at 2015-03-30 14:39:59 -0700
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2015-03-30 14:41:49 -0700
+Processing by ProjectsController#index as HTML
+  Rendered projects/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 68ms (Views: 60.9ms | ActiveRecord: 0.0ms)
+Started GET "/projects/new" for 127.0.0.1 at 2015-03-30 14:41:49 -0700
+Processing by ProjectsController#new as HTML
+  Rendered projects/new.html.erb within layouts/application (9.6ms)
+Completed 200 OK in 17ms (Views: 10.8ms | ActiveRecord: 2.3ms)
+Started POST "/projects" for 127.0.0.1 at 2015-03-30 14:41:49 -0700
+Processing by ProjectsController#create as HTML
+  Parameters: {"utf8"=>"✓", "project"=>{"name"=>"TextMate 2", "description"=>"A text-editor for OS X"}, "commit"=>"Create Project"}
+Completed 500 Internal Server Error in 1ms
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2015-03-30 14:45:09 -0700
+Processing by ProjectsController#index as HTML
+  Rendered projects/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 65ms (Views: 57.6ms | ActiveRecord: 0.0ms)
+Started GET "/projects/new" for 127.0.0.1 at 2015-03-30 14:45:09 -0700
+Processing by ProjectsController#new as HTML
+  Rendered projects/new.html.erb within layouts/application (8.9ms)
+Completed 200 OK in 16ms (Views: 10.1ms | ActiveRecord: 2.0ms)
+Started POST "/projects" for 127.0.0.1 at 2015-03-30 14:45:09 -0700
+Processing by ProjectsController#create as HTML
+  Parameters: {"utf8"=>"✓", "project"=>{"name"=>"TextMate 2", "description"=>"A text-editor for OS X"}, "commit"=>"Create Project"}
+Completed 500 Internal Server Error in 1ms
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2015-03-30 14:46:10 -0700
+Processing by ProjectsController#index as HTML
+  Rendered projects/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 73ms (Views: 65.6ms | ActiveRecord: 0.0ms)
+Started GET "/projects/new" for 127.0.0.1 at 2015-03-30 14:46:10 -0700
+Processing by ProjectsController#new as HTML
+  Rendered projects/new.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 16ms (Views: 10.1ms | ActiveRecord: 2.2ms)
+Started POST "/projects" for 127.0.0.1 at 2015-03-30 14:46:10 -0700
+Processing by ProjectsController#create as HTML
+  Parameters: {"utf8"=>"✓", "project"=>{"name"=>"TextMate 2", "description"=>"A text-editor for OS X"}, "commit"=>"Create Project"}
+Completed 500 Internal Server Error in 2ms
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2015-03-30 14:49:11 -0700
+Processing by ProjectsController#index as HTML
+  Rendered projects/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 69ms (Views: 61.3ms | ActiveRecord: 0.0ms)
+Started GET "/projects/new" for 127.0.0.1 at 2015-03-30 14:49:11 -0700
+Processing by ProjectsController#new as HTML
+  Rendered projects/new.html.erb within layouts/application (9.4ms)
+Completed 200 OK in 17ms (Views: 10.6ms | ActiveRecord: 2.2ms)
+Started POST "/projects" for 127.0.0.1 at 2015-03-30 14:49:11 -0700
+Processing by ProjectsController#create as HTML
+  Parameters: {"utf8"=>"✓", "project"=>{"name"=>"TextMate 2", "description"=>"A text-editor for OS X"}, "commit"=>"Create Project"}
+Completed 500 Internal Server Error in 1ms
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2015-03-30 14:50:52 -0700
+Processing by ProjectsController#index as HTML
+  Rendered projects/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 69ms (Views: 61.8ms | ActiveRecord: 0.0ms)
+Started GET "/projects/new" for 127.0.0.1 at 2015-03-30 14:50:52 -0700
+Processing by ProjectsController#new as HTML
+  Rendered projects/new.html.erb within layouts/application (8.8ms)
+Completed 200 OK in 16ms (Views: 10.0ms | ActiveRecord: 2.0ms)
+Started POST "/projects" for 127.0.0.1 at 2015-03-30 14:50:52 -0700
+Processing by ProjectsController#create as HTML
+  Parameters: {"utf8"=>"✓", "project"=>{"name"=>"TextMate 2", "description"=>"A text-editor for OS X"}, "commit"=>"Create Project"}
+Completed 500 Internal Server Error in 1ms
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2015-03-30 14:52:49 -0700
+Processing by ProjectsController#index as HTML
+  Rendered projects/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 67ms (Views: 60.3ms | ActiveRecord: 0.0ms)
+Started GET "/projects/new" for 127.0.0.1 at 2015-03-30 14:52:49 -0700
+Processing by ProjectsController#new as HTML
+  Rendered projects/new.html.erb within layouts/application (8.9ms)
+Completed 200 OK in 16ms (Views: 10.1ms | ActiveRecord: 2.0ms)
+Started POST "/projects" for 127.0.0.1 at 2015-03-30 14:52:49 -0700
+Processing by ProjectsController#create as HTML
+  Parameters: {"utf8"=>"✓", "project"=>{"name"=>"TextMate 2", "description"=>"A text-editor for OS X"}, "commit"=>"Create Project"}
+Completed 500 Internal Server Error in 1ms
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2015-03-30 14:53:34 -0700
+Processing by ProjectsController#index as HTML
+  Rendered projects/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 65ms (Views: 57.6ms | ActiveRecord: 0.0ms)
+Started GET "/projects/new" for 127.0.0.1 at 2015-03-30 14:53:34 -0700
+Processing by ProjectsController#new as HTML
+  Rendered projects/new.html.erb within layouts/application (8.9ms)
+Completed 200 OK in 16ms (Views: 10.1ms | ActiveRecord: 2.0ms)
+Started POST "/projects" for 127.0.0.1 at 2015-03-30 14:53:34 -0700
+Processing by ProjectsController#create as HTML
+  Parameters: {"utf8"=>"✓", "project"=>{"name"=>"TextMate 2", "description"=>"A text-editor for OS X"}, "commit"=>"Create Project"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "projects" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["name", "TextMate 2"], ["description", "A text-editor for OS X"], ["created_at", "2015-03-30 21:53:34.709139"], ["updated_at", "2015-03-30 21:53:34.709139"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/projects/1
+Completed 302 Found in 6ms (ActiveRecord: 1.0ms)
+Started GET "/projects/1" for 127.0.0.1 at 2015-03-30 14:53:34 -0700
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mProject Load (16.1ms)[0m  SELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT 1  [["id", 1]]
+Completed 500 Internal Server Error in 83ms
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2015-03-30 14:54:24 -0700
+Processing by ProjectsController#index as HTML
+  Rendered projects/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 65ms (Views: 58.0ms | ActiveRecord: 0.0ms)
+Started GET "/projects/new" for 127.0.0.1 at 2015-03-30 14:54:24 -0700
+Processing by ProjectsController#new as HTML
+  Rendered projects/new.html.erb within layouts/application (9.3ms)
+Completed 200 OK in 16ms (Views: 10.5ms | ActiveRecord: 2.0ms)
+Started POST "/projects" for 127.0.0.1 at 2015-03-30 14:54:24 -0700
+Processing by ProjectsController#create as HTML
+  Parameters: {"utf8"=>"✓", "project"=>{"name"=>"TextMate 2", "description"=>"A text-editor for OS X"}, "commit"=>"Create Project"}
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "projects" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["name", "TextMate 2"], ["description", "A text-editor for OS X"], ["created_at", "2015-03-30 21:54:24.598325"], ["updated_at", "2015-03-30 21:54:24.598325"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/projects/2
+Completed 302 Found in 5ms (ActiveRecord: 0.7ms)
+Started GET "/projects/2" for 127.0.0.1 at 2015-03-30 14:54:24 -0700
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mProject Load (0.3ms)[0m  SELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT 1  [["id", 2]]
+  Rendered projects/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 51ms (Views: 1.6ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2015-03-30 14:58:16 -0700
+Processing by ProjectsController#index as HTML
+  Rendered projects/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 68ms (Views: 59.7ms | ActiveRecord: 0.0ms)
+Started GET "/projects/new" for 127.0.0.1 at 2015-03-30 14:58:16 -0700
+Processing by ProjectsController#new as HTML
+  Rendered projects/new.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 16ms (Views: 10.3ms | ActiveRecord: 2.0ms)
+Started POST "/projects" for 127.0.0.1 at 2015-03-30 14:58:16 -0700
+Processing by ProjectsController#create as HTML
+  Parameters: {"utf8"=>"✓", "project"=>{"name"=>"TextMate 2", "description"=>"A text-editor for OS X"}, "commit"=>"Create Project"}
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "projects" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["name", "TextMate 2"], ["description", "A text-editor for OS X"], ["created_at", "2015-03-30 21:58:16.300915"], ["updated_at", "2015-03-30 21:58:16.300915"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/projects/3
+Completed 302 Found in 7ms (ActiveRecord: 1.0ms)
+Started GET "/projects/3" for 127.0.0.1 at 2015-03-30 14:58:16 -0700
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mProject Load (0.3ms)[0m  SELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT 1  [["id", 3]]
+  Rendered projects/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 54ms (Views: 1.9ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2015-03-30 14:58:53 -0700
+Processing by ProjectsController#index as HTML
+  Rendered projects/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 64ms (Views: 56.5ms | ActiveRecord: 0.0ms)
+Started GET "/projects/new" for 127.0.0.1 at 2015-03-30 14:58:53 -0700
+Processing by ProjectsController#new as HTML
+  Rendered projects/new.html.erb within layouts/application (8.7ms)
+Completed 200 OK in 16ms (Views: 9.9ms | ActiveRecord: 1.9ms)
+Started POST "/projects" for 127.0.0.1 at 2015-03-30 14:58:53 -0700
+Processing by ProjectsController#create as HTML
+  Parameters: {"utf8"=>"✓", "project"=>{"name"=>"TextMate 2", "description"=>"A text-editor for OS X"}, "commit"=>"Create Project"}
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "projects" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["name", "TextMate 2"], ["description", "A text-editor for OS X"], ["created_at", "2015-03-30 21:58:53.830015"], ["updated_at", "2015-03-30 21:58:53.830015"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/projects/4
+Completed 302 Found in 5ms (ActiveRecord: 0.7ms)
+Started GET "/projects/4" for 127.0.0.1 at 2015-03-30 14:58:53 -0700
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mProject Load (0.3ms)[0m  SELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT 1  [["id", 4]]
+  Rendered projects/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 51ms (Views: 1.6ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2015-03-30 14:59:42 -0700
+Processing by ProjectsController#index as HTML
+  Rendered projects/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 66ms (Views: 59.1ms | ActiveRecord: 0.0ms)
+Started GET "/projects/new" for 127.0.0.1 at 2015-03-30 14:59:42 -0700
+Processing by ProjectsController#new as HTML
+  Rendered projects/new.html.erb within layouts/application (9.5ms)
+Completed 200 OK in 18ms (Views: 10.8ms | ActiveRecord: 2.1ms)
+Started POST "/projects" for 127.0.0.1 at 2015-03-30 14:59:42 -0700
+Processing by ProjectsController#create as HTML
+  Parameters: {"utf8"=>"✓", "project"=>{"name"=>"TextMate 2", "description"=>"A text-editor for OS X"}, "commit"=>"Create Project"}
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "projects" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["name", "TextMate 2"], ["description", "A text-editor for OS X"], ["created_at", "2015-03-30 21:59:42.754096"], ["updated_at", "2015-03-30 21:59:42.754096"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/projects/5
+Completed 302 Found in 5ms (ActiveRecord: 0.8ms)
+Started GET "/projects/5" for 127.0.0.1 at 2015-03-30 14:59:42 -0700
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mProject Load (0.3ms)[0m  SELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT 1  [["id", 5]]
+  Rendered projects/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 52ms (Views: 46.8ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
