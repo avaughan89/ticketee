@@ -9,5 +9,9 @@
 development:
   adapter: postgresql
   database: ticketee_development
-  username: root
-  password: t0ps3cr3t
+
+test:
+  adapter: postgresql
+  database: ticketee_test
+
+
