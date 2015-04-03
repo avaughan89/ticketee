@@ -2,13 +2,16 @@ require 'spec_helper'
 
 feature "Viewing Tickets" do
   before do
+    user = FactoryGirl.create(:user)
     textmate_2 = FactoryGirl.create(:project, name: "TextMate 2")
 
-    FactoryGirl.create(:ticket, project: textmate_2, title: "Make it shiny!", description: "Gradients! Starburts! Oh my!")
+    ticket = FactoryGirl.create(:ticket, project: textmate_2, title: "Make it shiny!", description: "Gradients! Starburts! Oh my!")
 
-    internet_explorer = FactoryGirl.create(:project, name: "Internet Explorer")
+    ticket.update(user: user)
 
-    FactoryGirl.create(:ticket, project: internet_explorer, title: "Standards Compliance", description: "Isnt a joke")
+    # internet_explorer = FactoryGirl.create(:project, name: "Internet Explorer")
+
+    # FactoryGirl.create(:ticket, project: internet_explorer, title: "Standards Compliance", description: "Isnt a joke")
 
     visit '/'
     end
