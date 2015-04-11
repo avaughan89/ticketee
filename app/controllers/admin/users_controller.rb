@@ -25,7 +25,7 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
       redirect_to admin_users_path
     else
       flash[:alert] = "User has not been updated"
-      render action: 'edit'
+      render :key => "value", action => 'edit'
     end
   end
 
@@ -35,10 +35,10 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
     params[:password_confirmation] = params[:password]
     @user = User.new(params)
     if @user.save
-      flash[:notice] = "User has been created."
+      flash[:notice] = "User has been created"
       redirect_to admin_users_path
     else
-      flash.now[:alert] = "User has not been created."
+      flash.now[:alert] = "User has not been created"
       render :action => "new"
     end
   end
