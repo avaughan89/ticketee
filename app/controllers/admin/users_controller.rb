@@ -44,8 +44,12 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
   end
 
   def destroy
-    @user.destroy
-    flash[:notice] = "User has been deleted"
+    if @user == current_user
+      flash[:alert] = "You cannot delete yourself!"
+    else
+      @user.destroy
+      flash[:notice] = "User has been deleted"
+    end
     redirect_to admin_users_path
   end
 
