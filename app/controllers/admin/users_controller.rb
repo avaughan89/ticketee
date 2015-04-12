@@ -43,6 +43,12 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
     end
   end
 
+  def destroy
+    @user.destroy
+    flash[:notice] = "User has been deleted"
+    redirect_to admin_users_path
+  end
+
   private
     def user_params
       params.require(:user).permit( :name,
