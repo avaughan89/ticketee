@@ -5,6 +5,7 @@
 Full test suite is completed in RSpec V 2.X
 ---
 To Use:
+
 1. Clone Repo
 2. bin/rails bundle install
 3. bin/rake db:create
@@ -26,4 +27,4 @@ Enjoy!
 
 ##### Please open any issues you may come accross and feel free to contribute!
 
-[Dance Party](http://i.giphy.com/2tDQZuljhwHTi.gif)
+![alt tag](http://i.giphy.com/2tDQZuljhwHTi.gif)
