@@ -5,6 +5,7 @@ feature "Creating Tickets" do
     project = FactoryGirl.create(:project)
     user = FactoryGirl.create(:user)
 
+
     visit '/'
     click_link project.name
     click_link "New Ticket"
