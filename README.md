@@ -1,4 +1,4 @@
-# ticketee
+# Ticketee
 ---
 ### A Project Management and Ticket Tracking Application
 ---
@@ -25,3 +25,5 @@ To serve to browser:
 Enjoy!
 
 ##### Please open any issues you may come accross and feel free to contribute!
+
+[Dance Party](http://i.giphy.com/2tDQZuljhwHTi.gif)
