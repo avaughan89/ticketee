@@ -3,6 +3,7 @@ require 'spec_helper'
 feature 'Viewing Projects' do
   let!(:user) {FactoryGirl.create(:user)}
   let!(:project) {FactoryGirl.create(:project)}
+  FactoryGirl.create(:project, name: 'Hidden')
 
   before do
     sign_in_as!(user)
@@ -11,7 +12,9 @@ feature 'Viewing Projects' do
 
   scenario "Listing all projects" do
     visit '/'
+    expect(page).to_not have_content('Hidden')
     click_link project.name
+
 
     expect(page.current_url).to eql(project_url(project))
   end
