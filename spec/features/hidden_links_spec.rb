@@ -4,6 +4,7 @@ feature 'hidden links' do
   let(:user) { FactoryGirl.create(:user)}
   let(:admin) {FactoryGirl.create(:admin_user)}
   let(:project) {FactoryGirl.create(:project)}
+  let(:ticket) {FactoryGirl.create(:ticket, project: project, user: user)}
 
   context 'anonymous users' do
     scenario 'cannot see the New Project Link' do
@@ -50,6 +51,24 @@ feature 'hidden links' do
       assert_no_link_for "New Ticket"
     end
 
+    scenario 'Edit ticket link is shown to a user with permission' do
+      # this scenario needs the ticket created first to set correct permissions
+      ticket
+      define_permission!(user, 'view', project)
+      define_permission!(user, 'edit tickets', project)
+      visit project_path(project)
+      click_link ticket.title
+      assert_link_for 'Edit Ticket'
+    end
+
+    scenario 'Edit ticket link is hidden from a user without permission' do
+    ticket
+    define_permission!(user, 'view', project)
+    visit project_path(project)
+    click_link ticket.title
+    assert_no_link_for 'Edit Ticket'
+    end
+
   end
 
   context 'admin users' do
@@ -74,5 +93,13 @@ feature 'hidden links' do
       visit project_path(project)
       assert_link_for "New Ticket"
     end
+
+    scenario "Edit ticket link is shown to admins" do
+      ticket
+      visit project_path(project)
+      click_link ticket.title
+      assert_link_for "Edit Ticket"
+    end
+
   end
 end
