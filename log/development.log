@@ -1505,3 +1505,396 @@ FOREIGN KEY ("user_id")
   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
   [1m[35mSQL (0.3ms)[0m  INSERT INTO "projects" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Ticketee Beta"], ["created_at", "2015-04-14 15:49:01.486709"], ["updated_at", "2015-04-14 15:49:01.486709"]]
   [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+
+
+Started GET "/" for ::1 at 2015-04-14 10:03:12 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ProjectsController#index as HTML
+Redirected to http://localhost:3000/signin
+Filter chain halted as :require_signin! rendered or redirected
+Completed 302 Found in 9ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/signin" for ::1 at 2015-04-14 10:03:12 -0700
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (9.3ms)
+Completed 200 OK in 2744ms (Views: 2743.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/admin/permissions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-14 10:03:15 -0700
+
+
+Started GET "/assets/admin/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-14 10:03:15 -0700
+
+
+Started GET "/assets/files.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-14 10:03:15 -0700
+
+
+Started GET "/assets/projects.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-14 10:03:15 -0700
+
+
+Started GET "/assets/tickets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-14 10:03:15 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-14 10:03:15 -0700
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-04-14 10:03:15 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-04-14 10:03:15 -0700
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for ::1 at 2015-04-14 10:03:15 -0700
+
+
+Started GET "/assets/admin/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-04-14 10:03:15 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-04-14 10:03:15 -0700
+
+
+Started GET "/assets/files.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-04-14 10:03:15 -0700
+
+
+Started GET "/assets/tickets.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-04-14 10:03:15 -0700
+
+
+Started GET "/assets/admin/permissions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-04-14 10:03:15 -0700
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-04-14 10:03:15 -0700
+
+
+Started GET "/assets/projects.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-04-14 10:03:15 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-04-14 10:03:15 -0700
+
+
+Started POST "/signin" for ::1 at 2015-04-14 10:03:34 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rND0s5MxX8TftzBBDqPdKS0bUzbXfePhFMdPyBLvkJ7YodN4t7iXDRI1IsW0xmlKRmAOVyBGP1qoaXY/SgD2gg==", "signin"=>{"name"=>"admin@example.com", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (1.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."name" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["name", "admin@example.com"]]
+  Rendered sessions/new.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 125ms (Views: 37.8ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/signin" for ::1 at 2015-04-14 10:03:38 -0700
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 44ms (Views: 43.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for ::1 at 2015-04-14 10:03:44 -0700
+Processing by UsersController#new as HTML
+  Rendered users/_form.html.erb (4.0ms)
+  Rendered users/new.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 57ms (Views: 52.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2015-04-14 10:04:04 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jWaDAiSXuivTj/+bDTQz4yjZS4mRpU+YbQ5PObYdgDX5F6TJAB5y4h4N7R+3UYeAQ6IW6GaekyPRoHbO7vLmKQ==", "user"=>{"name"=>"test", "email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+Unpermitted parameter: email
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  Rendered users/_form.html.erb (2.8ms)
+  Rendered users/new.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 201ms (Views: 46.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users" for ::1 at 2015-04-14 10:04:19 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6jcvDoFxfxQml+otNxGqn3DjDR08O4A+1PQdhXTyYv6eRgjFpfi33esV+KmNdB78G5hQfMsAXIVoWiRyLB0E4g==", "user"=>{"name"=>"test", "email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+Unpermitted parameter: email
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  Rendered users/_form.html.erb (1.5ms)
+  Rendered users/new.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 127ms (Views: 38.6ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users" for ::1 at 2015-04-14 10:05:39 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6jcvDoFxfxQml+otNxGqn3DjDR08O4A+1PQdhXTyYv6eRgjFpfi33esV+KmNdB78G5hQfMsAXIVoWiRyLB0E4g==", "user"=>{"name"=>"test", "email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("name", "password_digest", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["name", "test"], ["password_digest", "$2a$10$.cgTXoWhA86nGAAORHsW4e5EEn9mnlWMxSc65fns2gq9s1XUsRyUq"], ["email", "test@test.com"], ["created_at", "2015-04-14 17:05:39.234708"], ["updated_at", "2015-04-14 17:05:39.234708"]]
+  [1m[36m (8.6ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/projects
+Completed 302 Found in 101ms (ActiveRecord: 10.5ms)
+
+
+Started GET "/projects" for ::1 at 2015-04-14 10:05:39 -0700
+Processing by ProjectsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mProject Load (9.1ms)[0m  [1mSELECT "projects".* FROM "projects" INNER JOIN "permissions" ON "permissions"."thing_id" = "projects"."id" AND "permissions"."thing_type" = $1 WHERE "permissions"."action" = $2 AND "permissions"."user_id" = $3[0m  [["thing_type", "Project"], ["action", "view"], ["user_id", 2]]
+  Rendered projects/index.html.erb within layouts/application (19.1ms)
+Completed 200 OK in 157ms (Views: 56.1ms | ActiveRecord: 11.3ms)
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-14 10:05:39 -0700
+
+
+Started GET "/assets/projects.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-14 10:05:39 -0700
+
+
+Started GET "/assets/admin/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-14 10:05:39 -0700
+
+
+Started GET "/assets/admin/permissions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-14 10:05:39 -0700
+
+
+Started GET "/assets/files.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-14 10:05:39 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-04-14 10:05:39 -0700
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-04-14 10:05:39 -0700
+
+
+Started GET "/assets/tickets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-14 10:05:39 -0700
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for ::1 at 2015-04-14 10:05:39 -0700
+
+
+Started GET "/assets/admin/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-04-14 10:05:39 -0700
+
+
+Started GET "/assets/admin/permissions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-04-14 10:05:39 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-04-14 10:05:39 -0700
+
+
+Started GET "/assets/files.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-04-14 10:05:39 -0700
+
+
+Started GET "/assets/tickets.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-04-14 10:05:39 -0700
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-04-14 10:05:39 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-04-14 10:05:39 -0700
+
+
+Started GET "/assets/projects.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-04-14 10:05:39 -0700
+
+
+Started DELETE "/signout" for ::1 at 2015-04-14 10:05:46 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"lWC+hlITrdorNtNT+UntpiLMDzgnpOZ+gvibzU/OMQ7hEZlNdpplE+a0wddDLFnFSbdSWdCfOsU+VqI6FyFXEg=="}
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-04-14 10:05:46 -0700
+Processing by ProjectsController#index as HTML
+Redirected to http://localhost:3000/signin
+Filter chain halted as :require_signin! rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/signin" for ::1 at 2015-04-14 10:05:46 -0700
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 112ms (Views: 111.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/signin" for ::1 at 2015-04-14 10:05:53 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"51Ft0JQ8RITtazA/AiT4CrZwJjAW8xylogM5fHwMzVyTIEobsLWMTSDpIru4QUxp3Qt7UeHIwB4erQCLJOOrQA==", "signin"=>{"name"=>"admin@example.com", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.9ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."name" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["name", "admin@example.com"]]
+  Rendered sessions/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 49ms (Views: 45.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/signin" for ::1 at 2015-04-14 10:05:55 -0700
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 43ms (Views: 42.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/signin" for ::1 at 2015-04-14 10:06:08 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"AQSvJgqzsqDy79qch8vRd2UsClIHj5G/YQ5PGgLFQ5l1dYjtLjp6aT9tyBg9rmUUDldXM/C0TQTdoHbtWiolhQ==", "signin"=>{"name"=>"test@test.com", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."name" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["name", "test@test.com"]]
+  Rendered sessions/new.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 41ms (Views: 39.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/signin" for ::1 at 2015-04-14 10:06:11 -0700
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 123ms (Views: 122.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/signin" for ::1 at 2015-04-14 10:06:17 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+T5+fw5jcQZ41gkUGQbBBBn0Y2zGxOcGtLC/ValEHYONT1m0Kuq5z7VUG5CjY3Vnco8+DTH/O70IHoai8at7nw==", "signin"=>{"name"=>"test@test.com", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."name" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["name", "test@test.com"]]
+  Rendered sessions/new.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 41ms (Views: 37.7ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/signin" for ::1 at 2015-04-14 10:11:14 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"KWj3xKQLB04FU/WPvxZqqwr/Qozxp/5QZ//4nN8HVapdGdAPgILPh8jR5wsFc97IYYQf7QacIuvbUcFrh+gztg==", "signin"=>{"name"=>"admin@example.com", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."name" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["name", "admin@example.com"]]
+  Rendered sessions/new.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 47ms (Views: 41.0ms | ActiveRecord: 1.5ms)
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users"[0m
+
+
+Started GET "/signin" for ::1 at 2015-04-14 10:18:28 -0700
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 114ms (Views: 113.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/signin" for ::1 at 2015-04-14 10:18:34 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"U8soMzUBP++Q/ZvFWLCBW5uqzwUCizfXFUJDM5MYQLMnug/4EYj3Jl1/iUHi1TU48NGSZPWw62yp7HrEy/cmrw==", "signin"=>{"name"=>"test@test.com", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."name" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["name", "test@test.com"]]
+  Rendered sessions/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 40ms (Views: 37.6ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/signin" for ::1 at 2015-04-14 10:28:56 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qkFUhDxU4hBYaAZ/aSyYQQqcbuTmJsgQxQuJ5as28hveMHNPGN0q2ZXqFPvTSSwiYeczhREdFKt5pbAS89mUBw==", "signin"=>{"name"=>"test", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."name" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["name", "test"]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 76ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2015-04-14 10:28:56 -0700
+Processing by ProjectsController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT "projects".* FROM "projects" INNER JOIN "permissions" ON "permissions"."thing_id" = "projects"."id" AND "permissions"."thing_type" = $1 WHERE "permissions"."action" = $2 AND "permissions"."user_id" = $3[0m  [["thing_type", "Project"], ["action", "view"], ["user_id", 2]]
+  Rendered projects/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 63ms (Views: 52.8ms | ActiveRecord: 2.5ms)
+
+
+Started DELETE "/signout" for ::1 at 2015-04-14 10:29:06 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"3/HhE6yN4zcs/Rhm6I9u870WoQ3qNO1BZ6Jl5Sa+7zOrgMbYiAQr/uF/CuJS6tqQ1m38bB0PMfrbDFwSflGJLw=="}
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-04-14 10:29:06 -0700
+Processing by ProjectsController#index as HTML
+Redirected to http://localhost:3000/signin
+Filter chain halted as :require_signin! rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/signin" for ::1 at 2015-04-14 10:29:06 -0700
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 124ms (Views: 123.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/signin" for ::1 at 2015-04-14 10:29:24 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"83pvPqYLBBEsO3MZJnXJlj1ofSASj3FnIiUBJQgHtACHC0j1goLM2OG5YZ2cEH31VhMgQeW0rdyeizjSUOjSHA==", "signin"=>{"name"=>"admin", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."name" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["name", "admin"]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 80ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2015-04-14 10:29:24 -0700
+Processing by ProjectsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mProject Load (0.2ms)[0m  SELECT "projects".* FROM "projects"
+  Rendered projects/index.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 41ms (Views: 38.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/projects/1" for ::1 at 2015-04-14 10:29:28 -0700
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mProject Load (0.2ms)[0m  SELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mPermission Load (0.2ms)[0m  [1mSELECT "permissions".* FROM "permissions" WHERE "permissions"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mTicket Load (0.5ms)[0m  SELECT "tickets".* FROM "tickets" WHERE "tickets"."project_id" = $1  [["project_id", 1]]
+  Rendered projects/show.html.erb within layouts/application (31.2ms)
+Completed 200 OK in 81ms (Views: 76.8ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/projects/1/tickets/new" for ::1 at 2015-04-14 10:29:31 -0700
+Processing by TicketsController#new as HTML
+  Parameters: {"project_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mProject Load (0.2ms)[0m  SELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered tickets/_form.html.erb (6.2ms)
+  Rendered tickets/new.html.erb within layouts/application (7.7ms)
+Completed 200 OK in 77ms (Views: 46.8ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/projects/1/tickets" for ::1 at 2015-04-14 10:30:05 -0700
+Processing by TicketsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"r4hs5IX7Q9sHwkxQ6BxpZlM8ZSP4DyH+E6jQHyEl/UDb+UsvoXKLEspAXtRSed0FOEc4Qg80/UWvBunoecqbXA==", "ticket"=>{"title"=>"What is wrong?", "description"=>"Tests failing left and right", "assets_attributes"=>{"0"=>{"asset"=>#<ActionDispatch::Http::UploadedFile:0x007fa7761a6880 @tempfile=#<Tempfile:/var/folders/9p/55kh5mq17t7f1qmljgp2w02w0000gn/T/RackMultipart20150414-36674-jwq924.jpg>, @original_filename="cd-background-2.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"ticket[assets_attributes][0][asset]\"; filename=\"cd-background-2.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "1"=>{"asset"=>#<ActionDispatch::Http::UploadedFile:0x007fa7761a43f0 @tempfile=#<Tempfile:/var/folders/9p/55kh5mq17t7f1qmljgp2w02w0000gn/T/RackMultipart20150414-36674-18uqvnc.jpg>, @original_filename="aurora.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"ticket[assets_attributes][1][asset]\"; filename=\"aurora.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "2"=>{"asset"=>#<ActionDispatch::Http::UploadedFile:0x007fa7761aebc0 @tempfile=#<Tempfile:/var/folders/9p/55kh5mq17t7f1qmljgp2w02w0000gn/T/RackMultipart20150414-36674-1h5hcx0.jpg>, @original_filename="beaches.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"ticket[assets_attributes][2][asset]\"; filename=\"beaches.jpg\"\r\nContent-Type: image/jpeg\r\n">}}}, "commit"=>"Create Ticket", "project_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mProject Load (0.2ms)[0m  SELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "tickets" ("title", "description", "project_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["title", "What is wrong?"], ["description", "Tests failing left and right"], ["project_id", 1], ["user_id", 1], ["created_at", "2015-04-14 17:30:05.048356"], ["updated_at", "2015-04-14 17:30:05.048356"]]
+  [1m[36mSQL (2.4ms)[0m  [1mINSERT INTO "assets" ("asset", "ticket_id", "content_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["asset", "cd-background-2.jpg"], ["ticket_id", 1], ["content_type", "image/jpeg"], ["created_at", "2015-04-14 17:30:05.050978"], ["updated_at", "2015-04-14 17:30:05.050978"]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "assets" ("asset", "ticket_id", "content_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["asset", "aurora.jpg"], ["ticket_id", 1], ["content_type", "image/jpeg"], ["created_at", "2015-04-14 17:30:05.057499"], ["updated_at", "2015-04-14 17:30:05.057499"]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "assets" ("asset", "ticket_id", "content_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["asset", "beaches.jpg"], ["ticket_id", 1], ["content_type", "image/jpeg"], ["created_at", "2015-04-14 17:30:05.060767"], ["updated_at", "2015-04-14 17:30:05.060767"]]
+  [1m[35m (7.2ms)[0m  COMMIT
+Redirected to http://localhost:3000/projects/1/tickets/1
+Completed 302 Found in 42ms (ActiveRecord: 11.4ms)
+
+
+Started GET "/projects/1/tickets/1" for ::1 at 2015-04-14 10:30:05 -0700
+Processing by TicketsController#show as HTML
+  Parameters: {"project_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mProject Load (0.4ms)[0m  SELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mTicket Load (0.2ms)[0m  [1mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."project_id" = $1 AND "tickets"."id" = $2 LIMIT 1[0m  [["project_id", 1], ["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mAsset Load (0.2ms)[0m  [1mSELECT "assets".* FROM "assets" WHERE "assets"."ticket_id" = $1[0m  [["ticket_id", 1]]
+  [1m[35mPermission Load (0.2ms)[0m  SELECT "permissions".* FROM "permissions" WHERE "permissions"."user_id" = $1  [["user_id", 1]]
+  Rendered tickets/show.html.erb within layouts/application (17.6ms)
+Completed 200 OK in 143ms (Views: 137.9ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/projects/1/tickets/1/edit" for ::1 at 2015-04-14 10:30:30 -0700
+Processing by TicketsController#edit as HTML
+  Parameters: {"project_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mProject Load (0.2ms)[0m  SELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mTicket Load (0.2ms)[0m  [1mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."project_id" = $1 AND "tickets"."id" = $2 LIMIT 1[0m  [["project_id", 1], ["id", 1]]
+  [1m[35mAsset Load (0.2ms)[0m  SELECT "assets".* FROM "assets" WHERE "assets"."ticket_id" = $1  [["ticket_id", 1]]
+  Rendered tickets/_form.html.erb (14.2ms)
+  Rendered tickets/edit.html.erb within layouts/application (15.5ms)
+Completed 200 OK in 54ms (Views: 49.5ms | ActiveRecord: 0.9ms)
+
+
+Started PATCH "/projects/1/tickets/1" for ::1 at 2015-04-14 10:30:41 -0700
+Processing by TicketsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"EpZTSwp+KlLfOHE1zvbBycYQMIXrt0+YC5djaXzoFKJm53SALvfimxK6Y7F0k3WqrWtt5ByMkyO3OVqeJAdyvg==", "ticket"=>{"title"=>"What is wrong?", "description"=>"Tests failing left and right", "assets_attributes"=>{"0"=>{"asset"=>#<ActionDispatch::Http::UploadedFile:0x007fa77b27d5b0 @tempfile=#<Tempfile:/var/folders/9p/55kh5mq17t7f1qmljgp2w02w0000gn/T/RackMultipart20150414-36674-1mggfhn.jpg>, @original_filename="lacover.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"ticket[assets_attributes][0][asset]\"; filename=\"lacover.jpg\"\r\nContent-Type: image/jpeg\r\n">, "id"=>"1"}, "1"=>{"id"=>"2"}, "2"=>{"id"=>"3"}}}, "commit"=>"Update Ticket", "project_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mProject Load (0.2ms)[0m  SELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mTicket Load (0.2ms)[0m  [1mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."project_id" = $1 AND "tickets"."id" = $2 LIMIT 1[0m  [["project_id", 1], ["id", 1]]
+Unpermitted parameter: id
+Unpermitted parameter: id
+Unpermitted parameter: id
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+Completed 500 Internal Server Error in 14ms
+
+NoMethodError (undefined method `asset_changed?' for #<Ticket:0x007fa7758fbeb0>):
+  app/controllers/tickets_controller.rb:31:in `update'
+
+
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.2ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (30.2ms)
+Cannot render console with content type multipart/form-dataAllowed content types: [#<Mime::Type:0x007fa77420b278 @synonyms=["application/xhtml+xml"], @symbol=:html, @string="text/html">, #<Mime::Type:0x007fa77420aa30 @synonyms=[], @symbol=:text, @string="text/plain">, #<Mime::Type:0x007fa774212a00 @synonyms=[], @symbol=:url_encoded_form, @string="application/x-www-form-urlencoded">]

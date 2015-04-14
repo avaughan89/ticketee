@@ -14,7 +14,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-gem 'cancan', '~> 1.6.10'
+gem 'cancan', '~> 1.6.9'
+
 gem 'carrierwave', '0.8.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -52,4 +53,5 @@ end
 group :test, :development do
   gem 'capybara', "2.1.0"
   gem 'factory_girl_rails', '~> 4.2.1'
+  gem 'carrierwave', '0.8.0'
 end
