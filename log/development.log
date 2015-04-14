@@ -1898,3 +1898,161 @@ NoMethodError (undefined method `asset_changed?' for #<Ticket:0x007fa7758fbeb0>)
   Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
   Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (30.2ms)
 Cannot render console with content type multipart/form-dataAllowed content types: [#<Mime::Type:0x007fa77420b278 @synonyms=["application/xhtml+xml"], @symbol=:html, @string="text/html">, #<Mime::Type:0x007fa77420aa30 @synonyms=[], @symbol=:text, @string="text/plain">, #<Mime::Type:0x007fa774212a00 @synonyms=[], @symbol=:url_encoded_form, @string="application/x-www-form-urlencoded">]
+
+
+Started GET "/" for ::1 at 2015-04-14 15:57:48 -0700
+Processing by ProjectsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT "projects".* FROM "projects"[0m
+  Rendered projects/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 89ms (Views: 75.8ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/projects/1" for ::1 at 2015-04-14 15:57:50 -0700
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mPermission Load (0.2ms)[0m  SELECT "permissions".* FROM "permissions" WHERE "permissions"."user_id" = $1  [["user_id", 1]]
+  [1m[36mTicket Load (0.6ms)[0m  [1mSELECT "tickets".* FROM "tickets" WHERE "tickets"."project_id" = $1[0m  [["project_id", 1]]
+  Rendered projects/show.html.erb within layouts/application (21.5ms)
+Completed 200 OK in 65ms (Views: 60.3ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/projects/1/tickets/1" for ::1 at 2015-04-14 15:57:53 -0700
+Processing by TicketsController#show as HTML
+  Parameters: {"project_id"=>"1", "id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTicket Load (0.3ms)[0m  SELECT  "tickets".* FROM "tickets" WHERE "tickets"."project_id" = $1 AND "tickets"."id" = $2 LIMIT 1  [["project_id", 1], ["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAsset Load (0.2ms)[0m  SELECT "assets".* FROM "assets" WHERE "assets"."ticket_id" = $1  [["ticket_id", 1]]
+  [1m[36mPermission Load (0.2ms)[0m  [1mSELECT "permissions".* FROM "permissions" WHERE "permissions"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered tickets/show.html.erb within layouts/application (20.4ms)
+Completed 200 OK in 129ms (Views: 53.2ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/projects/1/tickets/1/edit" for ::1 at 2015-04-14 15:57:56 -0700
+Processing by TicketsController#edit as HTML
+  Parameters: {"project_id"=>"1", "id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTicket Load (0.2ms)[0m  SELECT  "tickets".* FROM "tickets" WHERE "tickets"."project_id" = $1 AND "tickets"."id" = $2 LIMIT 1  [["project_id", 1], ["id", 1]]
+  [1m[36mAsset Load (0.2ms)[0m  [1mSELECT "assets".* FROM "assets" WHERE "assets"."ticket_id" = $1[0m  [["ticket_id", 1]]
+  Rendered tickets/_form.html.erb (3.1ms)
+  Rendered tickets/edit.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 50ms (Views: 46.0ms | ActiveRecord: 0.7ms)
+
+
+Started PATCH "/projects/1/tickets/1" for ::1 at 2015-04-14 15:58:08 -0700
+Processing by TicketsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sAhARQtFt/wu1+d8GeOr/zRf6+hdkLu5ovWKdqm2WK7EeWeOL8x/NeNV9fijhh+cXyS2iaqrZwIeW7OB8Vk+sg==", "ticket"=>{"title"=>"What is wrong?", "description"=>"Tests failing left and right", "assets_attributes"=>{"0"=>{"id"=>"1"}, "1"=>{"id"=>"2"}, "2"=>{"asset"=>#<ActionDispatch::Http::UploadedFile:0x007fa776447918 @tempfile=#<Tempfile:/var/folders/9p/55kh5mq17t7f1qmljgp2w02w0000gn/T/RackMultipart20150414-36674-dpik2w.jpg>, @original_filename="headshotav.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"ticket[assets_attributes][2][asset]\"; filename=\"headshotav.jpg\"\r\nContent-Type: image/jpeg\r\n">, "id"=>"3"}}}, "commit"=>"Update Ticket", "project_id"=>"1", "id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mProject Load (0.2ms)[0m  [1mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTicket Load (0.2ms)[0m  SELECT  "tickets".* FROM "tickets" WHERE "tickets"."project_id" = $1 AND "tickets"."id" = $2 LIMIT 1  [["project_id", 1], ["id", 1]]
+Unpermitted parameter: id
+Unpermitted parameter: id
+Unpermitted parameter: id
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "assets" ("ticket_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["ticket_id", 1], ["created_at", "2015-04-14 22:58:08.494539"], ["updated_at", "2015-04-14 22:58:08.494539"]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "assets" ("ticket_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["ticket_id", 1], ["created_at", "2015-04-14 22:58:08.496523"], ["updated_at", "2015-04-14 22:58:08.496523"]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "assets" ("asset", "ticket_id", "content_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["asset", "headshotav.jpg"], ["ticket_id", 1], ["content_type", "image/jpeg"], ["created_at", "2015-04-14 22:58:08.498426"], ["updated_at", "2015-04-14 22:58:08.498426"]]
+  [1m[36m (6.4ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/projects/1/tickets/1
+Completed 302 Found in 23ms (ActiveRecord: 7.6ms)
+
+
+Started GET "/projects/1/tickets/1" for ::1 at 2015-04-14 15:58:08 -0700
+Processing by TicketsController#show as HTML
+  Parameters: {"project_id"=>"1", "id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTicket Load (0.1ms)[0m  SELECT  "tickets".* FROM "tickets" WHERE "tickets"."project_id" = $1 AND "tickets"."id" = $2 LIMIT 1  [["project_id", 1], ["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAsset Load (0.3ms)[0m  SELECT "assets".* FROM "assets" WHERE "assets"."ticket_id" = $1  [["ticket_id", 1]]
+  Rendered tickets/show.html.erb within layouts/application (7.9ms)
+Completed 500 Internal Server Error in 12ms
+
+ActionView::Template::Error (no implicit conversion of nil into String):
+    11:   <div class="assets">
+    12:     <% @ticket.assets.each do |asset| %>
+    13:     <p>
+    14:      <%= link_to File.basename(asset.asset.path), asset.asset.url %>
+    15:    </p>
+    16:    <p>
+    17:     <small><%= number_to_human_size(asset.asset.size) %></small>
+  app/views/tickets/show.html.erb:14:in `basename'
+  app/views/tickets/show.html.erb:14:in `block in _app_views_tickets_show_html_erb__823286692475198584_70178650340440'
+  app/views/tickets/show.html.erb:12:in `_app_views_tickets_show_html_erb__823286692475198584_70178650340440'
+
+
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.7ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (71.7ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (97.1ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (18.3ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.8ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (48.8ms)
+
+
+Started PATCH "/projects/1/tickets/1" for ::1 at 2015-04-14 16:01:35 -0700
+Processing by TicketsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HgV3tTDY/In9bKO+G+Za8hSLnFRxllA+6+tVSKePZA5qdFB+FFE0QDDusTqhg+6Rf/DBNYatjIVXRWy//2ACEg==", "ticket"=>{"title"=>"What is wrong?", "description"=>"nil class string?", "assets_attributes"=>{"0"=>{"id"=>"1"}, "1"=>{"id"=>"2"}, "2"=>{"asset"=>#<ActionDispatch::Http::UploadedFile:0x007fa77b106fb0 @tempfile=#<Tempfile:/var/folders/9p/55kh5mq17t7f1qmljgp2w02w0000gn/T/RackMultipart20150414-36674-189d29t.jpg>, @original_filename="headshotav.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"ticket[assets_attributes][2][asset]\"; filename=\"headshotav.jpg\"\r\nContent-Type: image/jpeg\r\n">, "id"=>"3"}}}, "commit"=>"Update Ticket", "project_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mProject Load (0.2ms)[0m  SELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mTicket Load (0.1ms)[0m  [1mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."project_id" = $1 AND "tickets"."id" = $2 LIMIT 1[0m  [["project_id", 1], ["id", 1]]
+Unpermitted parameter: id
+Unpermitted parameter: id
+Unpermitted parameter: id
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "tickets" SET "description" = $1, "updated_at" = $2 WHERE "tickets"."id" = $3[0m  [["description", "nil class string?"], ["updated_at", "2015-04-14 23:01:35.296970"], ["id", 1]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "assets" ("ticket_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["ticket_id", 1], ["created_at", "2015-04-14 23:01:35.299932"], ["updated_at", "2015-04-14 23:01:35.299932"]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "assets" ("ticket_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["ticket_id", 1], ["created_at", "2015-04-14 23:01:35.302455"], ["updated_at", "2015-04-14 23:01:35.302455"]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "assets" ("asset", "ticket_id", "content_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["asset", "headshotav.jpg"], ["ticket_id", 1], ["content_type", "image/jpeg"], ["created_at", "2015-04-14 23:01:35.304389"], ["updated_at", "2015-04-14 23:01:35.304389"]]
+  [1m[36m (6.3ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/projects/1/tickets/1
+Completed 302 Found in 27ms (ActiveRecord: 8.4ms)
+
+
+Started GET "/projects/1/tickets/1" for ::1 at 2015-04-14 16:01:35 -0700
+Processing by TicketsController#show as HTML
+  Parameters: {"project_id"=>"1", "id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTicket Load (0.1ms)[0m  SELECT  "tickets".* FROM "tickets" WHERE "tickets"."project_id" = $1 AND "tickets"."id" = $2 LIMIT 1  [["project_id", 1], ["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mPermission Load (0.2ms)[0m  SELECT "permissions".* FROM "permissions" WHERE "permissions"."user_id" = $1  [["user_id", 1]]
+  [1m[36mAsset Load (0.2ms)[0m  [1mSELECT "assets".* FROM "assets" WHERE "assets"."ticket_id" = $1[0m  [["ticket_id", 1]]
+  Rendered tickets/show.html.erb within layouts/application (8.1ms)
+Completed 500 Internal Server Error in 13ms
+
+ActionView::Template::Error (no implicit conversion of nil into String):
+    18:     <div class="assets">
+    19:       <% @ticket.assets.each do |asset| %>
+    20:         <p>
+    21:           <%= link_to File.basename(asset.asset.path), file_path(asset) %>
+    22:         </p>
+    23:         <p>
+    24:           <small><%= number_to_human_size(asset.asset.size) %></small>
+  app/views/tickets/show.html.erb:21:in `basename'
+  app/views/tickets/show.html.erb:21:in `block in _app_views_tickets_show_html_erb__823286692475198584_70178609362140'
+  app/views/tickets/show.html.erb:19:in `_app_views_tickets_show_html_erb__823286692475198584_70178609362140'
+
+
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.8ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (28.3ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (15.2ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (34.8ms)
