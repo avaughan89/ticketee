@@ -59,3 +59,14 @@ group :test, :development do
   gem 'factory_girl_rails', '~> 4.2.1'
   gem 'factory_girl', '4.2.0'
 end
+
+# Bootstrap - font awesome
+gem 'bootstrap-sass', '~> 3.3.4'
+gem 'font-awesome-rails', '~> 4.3.0'
+gem 'simple_form', '~> 3.1.0'
+
+# Authentication
+gem 'devise', '~> 3.4.1'
+
+# Policies
+gem 'pundit', '~> 0.3.0'
