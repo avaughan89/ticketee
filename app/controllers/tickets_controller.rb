@@ -24,6 +24,9 @@ class TicketsController < ApplicationController
     end
   end
 
+  def show
+  end
+
   def edit
   end
 
@@ -35,7 +38,7 @@ class TicketsController < ApplicationController
     else
       flash[:alert] = "Ticket has not been updated."
 
-      render action: "edit"
+      render "edit"
     end
   end
 
@@ -60,7 +63,7 @@ class TicketsController < ApplicationController
     end
 
     def ticket_params
-      params.require(:ticket).permit(:title, :description,  assets_attributes: [:asset])
+      params.require(:ticket).permit(:title, :description,  :assets_attributes => [:asset])
     end
 
     def authorize_create!

@@ -53,5 +53,4 @@ end
 group :test, :development do
   gem 'capybara', "2.1.0"
   gem 'factory_girl_rails', '~> 4.2.1'
-  gem 'carrierwave', '0.8.0'
 end
