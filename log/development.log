@@ -2056,3 +2056,528 @@ ActionView::Template::Error (no implicit conversion of nil into String):
   Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
   Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
   Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (34.8ms)
+
+
+Started PATCH "/projects/1/tickets/1" for ::1 at 2015-04-14 16:08:53 -0700
+Processing by TicketsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HgV3tTDY/In9bKO+G+Za8hSLnFRxllA+6+tVSKePZA5qdFB+FFE0QDDusTqhg+6Rf/DBNYatjIVXRWy//2ACEg==", "ticket"=>{"title"=>"What is wrong?", "description"=>"nil class string?", "assets_attributes"=>{"0"=>{"id"=>"1"}, "1"=>{"id"=>"2"}, "2"=>{"asset"=>#<ActionDispatch::Http::UploadedFile:0x007fa77966faf8 @tempfile=#<Tempfile:/var/folders/9p/55kh5mq17t7f1qmljgp2w02w0000gn/T/RackMultipart20150414-36674-12pjhn5.jpg>, @original_filename="headshotav.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"ticket[assets_attributes][2][asset]\"; filename=\"headshotav.jpg\"\r\nContent-Type: image/jpeg\r\n">, "id"=>"3"}}}, "commit"=>"Update Ticket", "project_id"=>"1", "id"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mProject Load (0.2ms)[0m  [1mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTicket Load (0.1ms)[0m  SELECT  "tickets".* FROM "tickets" WHERE "tickets"."project_id" = $1 AND "tickets"."id" = $2 LIMIT 1  [["project_id", 1], ["id", 1]]
+Unpermitted parameter: id
+Unpermitted parameter: id
+Unpermitted parameter: id
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "assets" ("ticket_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["ticket_id", 1], ["created_at", "2015-04-14 23:08:53.244595"], ["updated_at", "2015-04-14 23:08:53.244595"]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "assets" ("ticket_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["ticket_id", 1], ["created_at", "2015-04-14 23:08:53.246060"], ["updated_at", "2015-04-14 23:08:53.246060"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "assets" ("asset", "ticket_id", "content_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["asset", "headshotav.jpg"], ["ticket_id", 1], ["content_type", "image/jpeg"], ["created_at", "2015-04-14 23:08:53.247390"], ["updated_at", "2015-04-14 23:08:53.247390"]]
+  [1m[36m (5.9ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/projects/1/tickets/1
+Completed 302 Found in 62ms (ActiveRecord: 11.8ms)
+
+
+Started GET "/projects/1/tickets/1" for ::1 at 2015-04-14 16:08:53 -0700
+Processing by TicketsController#show as HTML
+  Parameters: {"project_id"=>"1", "id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mProject Load (0.2ms)[0m  [1mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTicket Load (0.1ms)[0m  SELECT  "tickets".* FROM "tickets" WHERE "tickets"."project_id" = $1 AND "tickets"."id" = $2 LIMIT 1  [["project_id", 1], ["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mPermission Load (0.3ms)[0m  SELECT "permissions".* FROM "permissions" WHERE "permissions"."user_id" = $1  [["user_id", 1]]
+  [1m[36mAsset Load (0.2ms)[0m  [1mSELECT "assets".* FROM "assets" WHERE "assets"."ticket_id" = $1[0m  [["ticket_id", 1]]
+  Rendered tickets/show.html.erb within layouts/application (17.6ms)
+Completed 500 Internal Server Error in 25ms
+
+ActionView::Template::Error (no implicit conversion of nil into String):
+    18:     <div class="assets">
+    19:       <% @ticket.assets.each do |asset| %>
+    20:         <p>
+    21:           <%= link_to File.basename(asset.asset.path), file_path(asset) %>
+    22:         </p>
+    23:         <p>
+    24:           <small><%= number_to_human_size(asset.asset.size) %></small>
+  app/views/tickets/show.html.erb:21:in `basename'
+  app/views/tickets/show.html.erb:21:in `block in _app_views_tickets_show_html_erb__823286692475198584_70178609362140'
+  app/views/tickets/show.html.erb:19:in `_app_views_tickets_show_html_erb__823286692475198584_70178609362140'
+
+
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.7ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (20.3ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (16.0ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (33.3ms)
+
+
+Started GET "/" for ::1 at 2015-04-14 16:09:16 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ProjectsController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mProject Load (0.4ms)[0m  [1mSELECT "projects".* FROM "projects"[0m
+  Rendered projects/index.html.erb within layouts/application (6.7ms)
+Completed 200 OK in 1462ms (Views: 1425.6ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/projects/1" for ::1 at 2015-04-14 16:09:18 -0700
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mProject Load (0.2ms)[0m  [1mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mPermission Load (0.2ms)[0m  SELECT "permissions".* FROM "permissions" WHERE "permissions"."user_id" = $1  [["user_id", 1]]
+  [1m[36mTicket Load (0.3ms)[0m  [1mSELECT "tickets".* FROM "tickets" WHERE "tickets"."project_id" = $1[0m  [["project_id", 1]]
+  Rendered projects/show.html.erb within layouts/application (96.6ms)
+Completed 200 OK in 135ms (Views: 129.9ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/projects/1/tickets/1" for ::1 at 2015-04-14 16:09:20 -0700
+Processing by TicketsController#show as HTML
+  Parameters: {"project_id"=>"1", "id"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mProject Load (0.4ms)[0m  [1mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTicket Load (0.2ms)[0m  SELECT  "tickets".* FROM "tickets" WHERE "tickets"."project_id" = $1 AND "tickets"."id" = $2 LIMIT 1  [["project_id", 1], ["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mPermission Load (0.2ms)[0m  SELECT "permissions".* FROM "permissions" WHERE "permissions"."user_id" = $1  [["user_id", 1]]
+  [1m[36mAsset Load (0.3ms)[0m  [1mSELECT "assets".* FROM "assets" WHERE "assets"."ticket_id" = $1[0m  [["ticket_id", 1]]
+  Rendered tickets/show.html.erb within layouts/application (90.3ms)
+Completed 500 Internal Server Error in 100ms
+
+ActionView::Template::Error (no implicit conversion of nil into String):
+    18:     <div class="assets">
+    19:       <% @ticket.assets.each do |asset| %>
+    20:         <p>
+    21:           <%= link_to File.basename(asset.asset.path), file_path(asset) %>
+    22:         </p>
+    23:         <p>
+    24:           <small><%= number_to_human_size(asset.asset.size) %></small>
+  app/views/tickets/show.html.erb:21:in `basename'
+  app/views/tickets/show.html.erb:21:in `block in _app_views_tickets_show_html_erb___2027859743624013406_70112335932420'
+  app/views/tickets/show.html.erb:19:in `_app_views_tickets_show_html_erb___2027859743624013406_70112335932420'
+
+
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.6ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (18.6ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (11.4ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (27.4ms)
+
+
+Started GET "/projects/1/tickets/1" for ::1 at 2015-04-14 16:09:20 -0700
+Processing by TicketsController#show as HTML
+  Parameters: {"project_id"=>"1", "id"=>"1"}
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTicket Load (0.3ms)[0m  SELECT  "tickets".* FROM "tickets" WHERE "tickets"."project_id" = $1 AND "tickets"."id" = $2 LIMIT 1  [["project_id", 1], ["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mPermission Load (0.3ms)[0m  SELECT "permissions".* FROM "permissions" WHERE "permissions"."user_id" = $1  [["user_id", 1]]
+  [1m[36mAsset Load (0.2ms)[0m  [1mSELECT "assets".* FROM "assets" WHERE "assets"."ticket_id" = $1[0m  [["ticket_id", 1]]
+  Rendered tickets/show.html.erb within layouts/application (9.6ms)
+Completed 500 Internal Server Error in 16ms
+
+ActionView::Template::Error (no implicit conversion of nil into String):
+    18:     <div class="assets">
+    19:       <% @ticket.assets.each do |asset| %>
+    20:         <p>
+    21:           <%= link_to File.basename(asset.asset.path), file_path(asset) %>
+    22:         </p>
+    23:         <p>
+    24:           <small><%= number_to_human_size(asset.asset.size) %></small>
+  app/views/tickets/show.html.erb:21:in `basename'
+  app/views/tickets/show.html.erb:21:in `block in _app_views_tickets_show_html_erb___2027859743624013406_70112347556280'
+  app/views/tickets/show.html.erb:19:in `_app_views_tickets_show_html_erb___2027859743624013406_70112347556280'
+
+
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.5ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (18.3ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (11.5ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (26.9ms)
+
+
+Started GET "/projects/1" for ::1 at 2015-04-14 16:10:27 -0700
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mPermission Load (0.3ms)[0m  SELECT "permissions".* FROM "permissions" WHERE "permissions"."user_id" = $1  [["user_id", 1]]
+  [1m[36mTicket Load (0.5ms)[0m  [1mSELECT "tickets".* FROM "tickets" WHERE "tickets"."project_id" = $1[0m  [["project_id", 1]]
+  Rendered projects/show.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 51ms (Views: 47.1ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/assets/tickets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-14 16:10:27 -0700
+
+
+Started GET "/assets/projects.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-14 16:10:28 -0700
+
+
+Started GET "/assets/admin/permissions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-14 16:10:28 -0700
+
+
+Started GET "/assets/files.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-14 16:10:28 -0700
+
+
+Started GET "/assets/admin/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-14 16:10:28 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-04-14 16:10:28 -0700
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-04-14 16:10:28 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-04-14 16:10:28 -0700
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for ::1 at 2015-04-14 16:10:28 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-04-14 16:10:28 -0700
+
+
+Started GET "/assets/admin/permissions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-04-14 16:10:28 -0700
+
+
+Started GET "/assets/admin/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-04-14 16:10:28 -0700
+
+
+Started GET "/assets/files.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-04-14 16:10:28 -0700
+
+
+Started GET "/assets/projects.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-04-14 16:10:28 -0700
+
+
+Started GET "/assets/tickets.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-04-14 16:10:28 -0700
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-04-14 16:10:28 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-04-14 16:10:28 -0700
+
+
+Started GET "/projects/1/tickets/1" for ::1 at 2015-04-14 16:10:29 -0700
+Processing by TicketsController#show as HTML
+  Parameters: {"project_id"=>"1", "id"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mTicket Load (0.3ms)[0m  SELECT  "tickets".* FROM "tickets" WHERE "tickets"."project_id" = $1 AND "tickets"."id" = $2 LIMIT 1  [["project_id", 1], ["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mAsset Load (0.4ms)[0m  SELECT "assets".* FROM "assets" WHERE "assets"."ticket_id" = $1  [["ticket_id", 1]]
+  Rendered tickets/show.html.erb within layouts/application (9.6ms)
+Completed 500 Internal Server Error in 16ms
+
+ActionView::Template::Error (no implicit conversion of nil into String):
+    11:   <div class="assets">
+    12:     <% @ticket.assets.each do |asset| %>
+    13:     <p>
+    14:      <%= link_to File.basename(asset.asset.path), asset.asset.url %>
+    15:    </p>
+    16:    <p>
+    17:     <small><%= number_to_human_size(asset.asset.size) %></small>
+  app/views/tickets/show.html.erb:14:in `basename'
+  app/views/tickets/show.html.erb:14:in `block in _app_views_tickets_show_html_erb___2027859743624013406_70112346892720'
+  app/views/tickets/show.html.erb:12:in `_app_views_tickets_show_html_erb___2027859743624013406_70112346892720'
+
+
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.8ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (25.7ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (15.3ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (95.3ms)
+
+
+Started GET "/projects/1/tickets/1" for ::1 at 2015-04-14 16:10:29 -0700
+Processing by TicketsController#show as HTML
+  Parameters: {"project_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mProject Load (0.2ms)[0m  SELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mTicket Load (0.2ms)[0m  [1mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."project_id" = $1 AND "tickets"."id" = $2 LIMIT 1[0m  [["project_id", 1], ["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mAsset Load (0.3ms)[0m  [1mSELECT "assets".* FROM "assets" WHERE "assets"."ticket_id" = $1[0m  [["ticket_id", 1]]
+  Rendered tickets/show.html.erb within layouts/application (9.9ms)
+Completed 500 Internal Server Error in 15ms
+
+ActionView::Template::Error (no implicit conversion of nil into String):
+    11:   <div class="assets">
+    12:     <% @ticket.assets.each do |asset| %>
+    13:     <p>
+    14:      <%= link_to File.basename(asset.asset.path), asset.asset.url %>
+    15:    </p>
+    16:    <p>
+    17:     <small><%= number_to_human_size(asset.asset.size) %></small>
+  app/views/tickets/show.html.erb:14:in `basename'
+  app/views/tickets/show.html.erb:14:in `block in _app_views_tickets_show_html_erb___2027859743624013406_70112328239160'
+  app/views/tickets/show.html.erb:12:in `_app_views_tickets_show_html_erb___2027859743624013406_70112328239160'
+
+
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.5ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (19.4ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (11.6ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (27.3ms)
+
+
+Started GET "/" for ::1 at 2015-04-14 16:21:36 -0700
+Processing by ProjectsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT "projects".* FROM "projects"[0m
+  Rendered projects/index.html.erb within layouts/application (6.2ms)
+Completed 200 OK in 59ms (Views: 43.7ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/" for ::1 at 2015-04-14 16:21:36 -0700
+Processing by ProjectsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mProject Load (0.2ms)[0m  [1mSELECT "projects".* FROM "projects"[0m
+  Rendered projects/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 39ms (Views: 37.1ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/signout" for ::1 at 2015-04-14 16:21:38 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"62nv3yPlVXcxRzsYBtrV2nEpMm909616n/Be0V7BEdSfGMgUB2ydvvzFKZy8v2G5GlJvDoPMccEjXmcmBi53yA=="}
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-04-14 16:21:38 -0700
+Processing by ProjectsController#index as HTML
+Redirected to http://localhost:3000/signin
+Filter chain halted as :require_signin! rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/signin" for ::1 at 2015-04-14 16:21:38 -0700
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (79.0ms)
+Completed 200 OK in 116ms (Views: 115.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signin" for ::1 at 2015-04-14 16:21:40 -0700
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 35ms (Views: 34.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/signin" for ::1 at 2015-04-14 16:21:48 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zMt4lYCdTvnMFWxoOGehnIJDcaSvyemdb+fbYI0EnJO4ul9epBSGMAGXfuyCAhX/6TgsxVjyNSbTSeKX1ev6jw==", "signin"=>{"name"=>"test", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."name" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["name", "test"]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 72ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2015-04-14 16:21:48 -0700
+Processing by ProjectsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mProject Load (0.3ms)[0m  SELECT "projects".* FROM "projects" INNER JOIN "permissions" ON "permissions"."thing_id" = "projects"."id" AND "permissions"."thing_type" = $1 WHERE "permissions"."action" = $2 AND "permissions"."user_id" = $3  [["thing_type", "Project"], ["action", "view"], ["user_id", 2]]
+  Rendered projects/index.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 46ms (Views: 40.6ms | ActiveRecord: 1.0ms)
+
+
+Started DELETE "/signout" for ::1 at 2015-04-14 16:21:52 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"PvflGdcMLUyX/syPkFE7IyW98tAYsAysfS57+Ve929RKhsLS84XlhVp83gsqNI9ATsavse+L0BfBgEIOD1K9yA=="}
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-04-14 16:21:52 -0700
+Processing by ProjectsController#index as HTML
+Redirected to http://localhost:3000/signin
+Filter chain halted as :require_signin! rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/signin" for ::1 at 2015-04-14 16:21:52 -0700
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 33ms (Views: 33.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signin" for ::1 at 2015-04-14 16:21:57 -0700
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 45ms (Views: 44.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/signin" for ::1 at 2015-04-14 16:22:02 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sULLE5Ro6P2ux/tElkFVd5W3xOY9Z02oPHIhpH8PhWzFM+zYsOEgNGNF6cAsJOEU/syZh8pckROA3BhTJ+DjcA==", "signin"=>{"name"=>"admin", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."name" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["name", "admin"]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 82ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/" for ::1 at 2015-04-14 16:22:02 -0700
+Processing by ProjectsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mProject Load (0.2ms)[0m  [1mSELECT "projects".* FROM "projects"[0m
+  Rendered projects/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 34ms (Views: 32.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/projects/1" for ::1 at 2015-04-14 16:22:04 -0700
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mPermission Load (0.2ms)[0m  SELECT "permissions".* FROM "permissions" WHERE "permissions"."user_id" = $1  [["user_id", 1]]
+  [1m[36mTicket Load (0.2ms)[0m  [1mSELECT "tickets".* FROM "tickets" WHERE "tickets"."project_id" = $1[0m  [["project_id", 1]]
+  Rendered projects/show.html.erb within layouts/application (88.7ms)
+Completed 200 OK in 133ms (Views: 130.0ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/projects/1/edit" for ::1 at 2015-04-14 16:22:06 -0700
+Processing by ProjectsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered projects/_form.html.erb (3.3ms)
+  Rendered projects/edit.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 43ms (Views: 40.3ms | ActiveRecord: 0.3ms)
+
+
+Started PATCH "/projects/1" for ::1 at 2015-04-14 16:22:12 -0700
+Processing by ProjectsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"08mtxDPTe+OkBpUDn1PQyDLaALMjW8/FPhePezSFl0unuIoPF1qzKmmEh4clNmSrWaFd0tRgE36CubaMbGrxVw==", "project"=>{"name"=>"Ticketee Beta", "description"=>"What is goiing on"}, "commit"=>"Update Project", "id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mProject Load (0.4ms)[0m  [1mSELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "projects" SET "description" = $1, "updated_at" = $2 WHERE "projects"."id" = $3[0m  [["description", "What is goiing on"], ["updated_at", "2015-04-14 23:22:12.719509"], ["id", 1]]
+  [1m[35m (6.3ms)[0m  COMMIT
+Redirected to http://localhost:3000/projects/1
+Completed 302 Found in 15ms (ActiveRecord: 7.5ms)
+
+
+Started GET "/projects/1" for ::1 at 2015-04-14 16:22:12 -0700
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mProject Load (0.1ms)[0m  SELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mPermission Load (0.2ms)[0m  [1mSELECT "permissions".* FROM "permissions" WHERE "permissions"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mTicket Load (0.2ms)[0m  SELECT "tickets".* FROM "tickets" WHERE "tickets"."project_id" = $1  [["project_id", 1]]
+  Rendered projects/show.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 47ms (Views: 44.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/projects/1/tickets/1" for ::1 at 2015-04-14 16:22:14 -0700
+Processing by TicketsController#show as HTML
+  Parameters: {"project_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mProject Load (0.2ms)[0m  SELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mTicket Load (0.2ms)[0m  [1mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."project_id" = $1 AND "tickets"."id" = $2 LIMIT 1[0m  [["project_id", 1], ["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mPermission Load (0.2ms)[0m  [1mSELECT "permissions".* FROM "permissions" WHERE "permissions"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mAsset Load (0.2ms)[0m  SELECT "assets".* FROM "assets" WHERE "assets"."ticket_id" = $1  [["ticket_id", 1]]
+  Rendered tickets/show.html.erb within layouts/application (90.8ms)
+Completed 500 Internal Server Error in 100ms
+
+ActionView::Template::Error (no implicit conversion of nil into String):
+    18:     <div class="assets">
+    19:       <% @ticket.assets.each do |asset| %>
+    20:         <p>
+    21:           <%= link_to File.basename(asset.asset.path), file_path(asset) %>
+    22:         </p>
+    23:         <p>
+    24:           <small><%= number_to_human_size(asset.asset.size) %></small>
+  app/views/tickets/show.html.erb:21:in `basename'
+  app/views/tickets/show.html.erb:21:in `block in _app_views_tickets_show_html_erb___2027859743624013406_70112336779300'
+  app/views/tickets/show.html.erb:19:in `_app_views_tickets_show_html_erb___2027859743624013406_70112336779300'
+
+
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.8ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (20.7ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (13.5ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (29.9ms)
+
+
+Started GET "/projects/1/tickets/1" for ::1 at 2015-04-14 16:22:14 -0700
+Processing by TicketsController#show as HTML
+  Parameters: {"project_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mProject Load (0.2ms)[0m  SELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mTicket Load (0.6ms)[0m  [1mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."project_id" = $1 AND "tickets"."id" = $2 LIMIT 1[0m  [["project_id", 1], ["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mPermission Load (0.2ms)[0m  [1mSELECT "permissions".* FROM "permissions" WHERE "permissions"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mAsset Load (0.2ms)[0m  SELECT "assets".* FROM "assets" WHERE "assets"."ticket_id" = $1  [["ticket_id", 1]]
+  Rendered tickets/show.html.erb within layouts/application (9.4ms)
+Completed 500 Internal Server Error in 16ms
+
+ActionView::Template::Error (no implicit conversion of nil into String):
+    18:     <div class="assets">
+    19:       <% @ticket.assets.each do |asset| %>
+    20:         <p>
+    21:           <%= link_to File.basename(asset.asset.path), file_path(asset) %>
+    22:         </p>
+    23:         <p>
+    24:           <small><%= number_to_human_size(asset.asset.size) %></small>
+  app/views/tickets/show.html.erb:21:in `basename'
+  app/views/tickets/show.html.erb:21:in `block in _app_views_tickets_show_html_erb___2027859743624013406_70112347607380'
+  app/views/tickets/show.html.erb:19:in `_app_views_tickets_show_html_erb___2027859743624013406_70112347607380'
+
+
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.8ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (24.2ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (15.4ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/Avaughan/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (30.2ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("email", "name", "password_digest", "admin", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "admin@example.com"], ["name", "admin"], ["password_digest", "$2a$10$1Orq3uA9Q0xrnGKZWl9DQOw9pL0OZ2oOUs2d6Qhx577prsiNuuAqu"], ["admin", "t"], ["created_at", "2015-04-14 23:29:46.465523"], ["updated_at", "2015-04-14 23:29:46.465523"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "projects" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Ticketee Beta"], ["created_at", "2015-04-14 23:29:46.526928"], ["updated_at", "2015-04-14 23:29:46.526928"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("email", "name", "password_digest", "admin", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "username@example.com"], ["name", "username"], ["password_digest", "$2a$10$I7BmiTURndagRjMaTtk0euZ/L7aZnlY37bBzMQKTnfK767kR7l6wG"], ["admin", "t"], ["created_at", "2015-04-14 23:29:46.598692"], ["updated_at", "2015-04-14 23:29:46.598692"]]
+  [1m[35m (0.5ms)[0m  COMMIT

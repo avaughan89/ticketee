@@ -16,6 +16,10 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 gem 'cancan', '~> 1.6.9'
 
+gem 'selenium-webdriver'
+
+gem 'database_cleaner', '1.0.1'
+
 gem 'carrierwave', '0.8.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -53,4 +57,5 @@ end
 group :test, :development do
   gem 'capybara', "2.1.0"
   gem 'factory_girl_rails', '~> 4.2.1'
+  gem 'factory_girl', '4.2.0'
 end
