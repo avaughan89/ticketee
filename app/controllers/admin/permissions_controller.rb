@@ -1,28 +1,31 @@
-class Admin::PermissionsController < Admin::BaseController
-  before_action :set_user
-
-  def index
-    @ability = Ability.new(@user)
-    @projects = Project.all
+class Admin::ProjectsController < Admin::BaseController
+  def new
+    @project = Project.new
   end
 
-  def set
-    @user.permissions.clear
-    params[:permissions].each do |id, permissions|
-      project = Project.find(id)
-      permissions.each do |permission, checked|
-        Permission.create!(user: @user,
-         thing: project,
-         action: permission)
-      end end
-      flash[:notice] = "Permissions updated."
-      redirect_to admin_user_permissions_path(@user)
+  def create
+    @project = Project.new(project_params)
+
+    if @project.save
+      flash[:notice] = 'Project has been created.'
+      redirect_to @project
+    else
+      flash[:alert] = 'Project has not been created.'
+      render 'new'
     end
-
-    private
-
-    def set_user
-      @user = User.find(params[:user_id])
-    end
-
   end
+
+  def destroy
+    @project = Project.find(params[:id])
+    @project.destroy
+
+    flash[:notice] = 'Project has been deleted.'
+    redirect_to projects_path
+  end
+
+  private
+
+  def project_params
+    params.require(:project).permit(:name, :description)
+  end
+end
