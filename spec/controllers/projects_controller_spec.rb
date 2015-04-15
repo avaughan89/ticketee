@@ -31,6 +31,12 @@ describe ProjectsController do
       expect(response).to redirect_to(root_path)
       expect(flash[:alert]).to eql("You must be an admin to do that")
     end
+
+    it 'can access the home page' do
+      visit '/'
+
+      expect(page).to have_content("Welcome")
+    end
   end
 
   it 'cannot access the show action without permission' do
