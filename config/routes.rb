@@ -1,25 +1,15 @@
-Rails.application.routes.draw do
-
+Conductor::Application.routes.draw do
   namespace :admin do
-    root "base#index"
-  resources :users do
-    resources :permissions
+    root 'base#index'
 
-    put 'permissions', to: 'permissions#set', as: 'set_permissions'
-    end
+    resources :projects, only: [:new, :create, :destroy]
+    resources :users
   end
 
-  root "projects#index"
+  devise_for :users
+  root 'projects#index'
 
-  resources :projects do
+  resources :projects, only: [:index, :show, :edit, :update] do
     resources :tickets
   end
-
-  resources :users
-  resources :files
-
-  get '/signin', to: 'sessions#new'
-  post '/signin', to: 'sessions#create'
-  delete '/signout', to: 'sessions#destroy', as: 'signout'
-
 end
