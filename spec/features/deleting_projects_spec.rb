@@ -22,4 +22,10 @@ feature "Deleting Projects" do
     expect(page).to have_no_content("TextMate 2")
 
   end
+
+  scenario 'Testing for delete button to remove itself' do
+    visit '/'
+
+    expect(page).to have_content("Delete")
+  end
 end
