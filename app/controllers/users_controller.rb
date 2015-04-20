@@ -9,7 +9,6 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      session[:user_id] = @user.id
       flash[:notice] = "You have signed up successfully."
       redirect_to projects_path
     else
@@ -43,6 +42,6 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name,
                                    :password,
-                                   :password_confirmation,:email)
+                                   :password_confirmation)
     end
 end
